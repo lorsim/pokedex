@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+import './components/style.css'
 import PokemonList from './components/PokemonList'
 import Pagination from './components/Pagination'
+import PokemonInfo from './components/PokemonInfo'
 
 const App = () => {
 
@@ -8,6 +10,7 @@ const App = () => {
   const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon')
   const [nextPageUrl, setNextPageUrl] = useState()
   const [prevPageUrl, setPrevPageUrl] = useState()
+  const [pokeDex, setPokeDex] = useState()
 
   const getAllPokemons = async () => {
     const res = await fetch(currentPageUrl)
@@ -39,16 +42,17 @@ const App = () => {
   }
 
   return (
-    <div className="app-contaner">
-      <h1>Pokemons</h1>
-      <div className="pokemon-container">
-        <div className="all-container"> 
-          <PokemonList pokemons = {allPokemons} />    
-        </div>
-           <Pagination
+    <div className="container">
+      <div className="left-content">
+         <h1>Pokemons</h1>
+        <PokemonList pokemons={allPokemons} pokemonDetails={poke => setPokeDex(poke)}/>    
+          <Pagination
             gotoNextPage={nextPageUrl ? gotoNextPage : null}
             gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
           />  
+      </div>
+      <div className="right-content">
+        <PokemonInfo data={pokeDex}/>
       </div>
     </div>
   );

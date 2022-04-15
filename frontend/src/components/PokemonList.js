@@ -11,7 +11,8 @@ import {
     Grid,
     Typography,
     TablePagination,
-    TableFooter
+    TableFooter,
+    Button
 } from '@material-ui/core'
  
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '0.75rem',
         color: 'white',
-        backgroundColor: 'grey',
+        backgroundColor: 'blue',
         borderRadius: 8,
         padding: '3px 10px',
         display: 'inline-block'
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
   
 
-  const PokemonList = ({ pokemons }) => {
+  const PokemonList = ({ pokemons, pokemonDetails }) => {
    
     const classes = useStyles()
     const [page, setPage] = useState(0)
@@ -71,11 +72,12 @@ const useStyles = makeStyles((theme) => ({
                             <TableCell className={classes.tableHeaderCell}>Avatar</TableCell>
                             <TableCell className={classes.tableHeaderCell}>Name</TableCell>
                             <TableCell className={classes.tableHeaderCell}>Type</TableCell>
+                            <TableCell className={classes.tableHeaderCell}>Details</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {pokemons.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
-                            <TableRow key={index}>
+                            <TableRow key={row.index}>
                                 <TableCell>
                                     <Grid container>
                                         <Grid item lg={10}>
@@ -88,8 +90,13 @@ const useStyles = makeStyles((theme) => ({
                                 </TableCell>
                                 <TableCell>
                                     <Typography
-                                        className={classes.status}
+                                        className={classes.name}
                                     >{row.types[0].type.name}</Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography
+                                        className={classes.status}
+                                    ><Button onClick={()=>pokemonDetails(row)}>View</Button></Typography>
                                 </TableCell>
                             </TableRow>
                         ))}
