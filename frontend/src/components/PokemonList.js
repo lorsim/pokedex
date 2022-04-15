@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { alpha, makeStyles } from '@material-ui/core/styles'
 import { 
     Table,
     TableBody,
@@ -12,8 +12,10 @@ import {
     Typography,
     TablePagination,
     TableFooter,
-    Button
+    Button,
+    TextField
 } from '@material-ui/core'
+import SearchIcon from '@material-ui/icons/Search'
  
 const useStyles = makeStyles((theme) => ({
     table: {
@@ -45,6 +47,22 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: 8,
         padding: '3px 10px',
         display: 'inline-block'
+    },
+    searchContainer: {
+        display: 'flex',
+        backgroundColor: alpha(theme.palette.common.white, 0.15),
+        paddingLeft: '20px',
+        paddingRight: '20px',
+        marginTop: '5px',
+        marginBottom: '5px',
+    },
+    searchIcon: {
+        alignSelf: 'flex-end',
+        marginBottom: '5px',
+    },
+    searchInput: {
+        width: '200px',
+        margin: '5px',
     }
 }));
   
@@ -54,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles()
     const [page, setPage] = useState(0)
     const [rowsPerPage, setRowsPerPage] = useState(10)
+    const [filter, setFilter] = useState('') 
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage)
@@ -63,11 +82,21 @@ const useStyles = makeStyles((theme) => ({
         setRowsPerPage(+event.target.value)
         setPage(0)
     }
+      
+    const handleSearchChange = (event) => {
+       setFilter(event.target.value) 
+    }
     return (
         <>
             <TableContainer component={Paper} className={classes.tableContainer}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
+                        <TableRow>
+                            <div className={classes.searchContainer}>
+                                <SearchIcon className={classes.searchIcon}/>
+                                <TextField onChange={handleSearchChange} className={classes.searchInput}/>
+                            </div>
+                        </TableRow>
                         <TableRow>
                             <TableCell className={classes.tableHeaderCell}>Avatar</TableCell>
                             <TableCell className={classes.tableHeaderCell}>Name</TableCell>
@@ -77,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
                     </TableHead>
                     <TableBody>
                         {pokemons.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
+                            row.name.includes(filter) &&
                             <TableRow key={row.index}>
                                 <TableCell>
                                     <Grid container>
