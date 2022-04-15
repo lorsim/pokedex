@@ -42,15 +42,8 @@ const App = () => {
     <div className="app-contaner">
       <h1>Pokemons</h1>
       <div className="pokemon-container">
-        <div className="all-container">
-          {allPokemons.map( (pokemonStats, index) => 
-            <PokemonList
-              key={index}
-              name={pokemonStats.name}
-              image={pokemonStats.sprites.other.dream_world.front_default}
-              type={pokemonStats.types[0].type.name}
-            />)}
-          
+        <div className="all-container"> 
+          <PokemonList pokemons = {allPokemons} />    
         </div>
            <Pagination
             gotoNextPage={nextPageUrl ? gotoNextPage : null}
