@@ -8,17 +8,16 @@ function Login() {
 
   return (
     <div className="login">
-          <h1 className="loginTitle">Login</h1>   
-          <div className="wrapper">
-               
-                <div className="center">
-                  <div className="loginButton facebook" onClick={facebook}>
-                    <img src={Facebook} alt="" className="icon" />
-                    Facebook
-                  </div>
-                </div>
+          <h1 className="loginTitle">Login using Facebook</h1>   
+          
+         <div className="center">
+            <div className="loginButton facebook" onClick={facebook}>
+              <img src={Facebook} alt="" className="icon" />
+              Facebook
+            </div>
+          </div>
               
-          </div>    
+             
     </div>
   )
 }
