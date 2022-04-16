@@ -88,61 +88,66 @@ const useStyles = makeStyles((theme) => ({
     }
     return (
         <>
-            <TableContainer component={Paper} className={classes.tableContainer}>
-                <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <div className={classes.searchContainer}>
-                                <SearchIcon className={classes.searchIcon}/>
-                                <TextField onChange={handleSearchChange} className={classes.searchInput}/>
-                            </div>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell className={classes.tableHeaderCell}>Avatar</TableCell>
-                            <TableCell className={classes.tableHeaderCell}>Name</TableCell>
-                            <TableCell className={classes.tableHeaderCell}>Type</TableCell>
-                            <TableCell className={classes.tableHeaderCell}>Details</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {pokemons.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
-                            row.name.includes(filter) &&
-                            <TableRow key={row.index}>
-                                <TableCell>
-                                    <Grid container>
-                                        <Grid item lg={10}>
-                                            <Typography className={classes.name}> <img src={row.sprites.other.dream_world.front_default} alt={row.name} /></Typography>
-                                        </Grid>
-                                    </Grid>
-                                </TableCell>
-                                <TableCell>
-                                    <Typography color="primary" variant="subtitle2">{row.name}</Typography>
-                                </TableCell>
-                                <TableCell>
-                                    <Typography
-                                        className={classes.name}
-                                    >{row.types[0].type.name}</Typography>
-                                </TableCell>
-                                <TableCell>
-                                    <Typography
-                                        className={classes.status}
-                                    ><Button onClick={()=>pokemonDetails(row)}>View</Button></Typography>
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                    <TableFooter>
-                        <TablePagination
-                            rowsPerPageOptions={[10, 20, 50]}
-                            component="div"
-                            count={pokemons.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage} />
-                    </TableFooter>
-                </Table>
-            </TableContainer>
+            <div className="container">
+              <div className="left-content">
+                <h1>Pokemons</h1>
+                    <TableContainer component={Paper} className={classes.tableContainer}>
+                        <Table className={classes.table} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <div className={classes.searchContainer}>
+                                        <SearchIcon className={classes.searchIcon}/>
+                                        <TextField onChange={handleSearchChange} className={classes.searchInput}/>
+                                    </div>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell className={classes.tableHeaderCell}>Avatar</TableCell>
+                                    <TableCell className={classes.tableHeaderCell}>Name</TableCell>
+                                    <TableCell className={classes.tableHeaderCell}>Type</TableCell>
+                                    <TableCell className={classes.tableHeaderCell}>Details</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {pokemons.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
+                                    row.name.includes(filter) &&
+                                    <TableRow key={row.index}>
+                                        <TableCell>
+                                            <Grid container>
+                                                <Grid item lg={10}>
+                                                    <Typography className={classes.name}> <img src={row.sprites.other.dream_world.front_default} alt={row.name} /></Typography>
+                                                </Grid>
+                                            </Grid>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Typography color="primary" variant="subtitle2">{row.name}</Typography>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Typography
+                                                className={classes.name}
+                                            >{row.types[0].type.name}</Typography>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Typography
+                                                className={classes.status}
+                                            ><Button onClick={()=>pokemonDetails(row)}>View</Button></Typography>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                            <TableFooter>
+                                <TablePagination
+                                    rowsPerPageOptions={[10, 20, 50]}
+                                    component="div"
+                                    count={pokemons.length}
+                                    rowsPerPage={rowsPerPage}
+                                    page={page}
+                                    onPageChange={handleChangePage}
+                                    onRowsPerPageChange={handleChangeRowsPerPage} />
+                            </TableFooter>
+                        </Table>
+                    </TableContainer>
+              </div>
+            </div>
         </>
     )
 }

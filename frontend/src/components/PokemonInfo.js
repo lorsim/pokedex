@@ -4,7 +4,8 @@ const PokemonInfo = ({ data }) => {
     console.log(data)
     return (
         <>
-            {
+            <div className="right-content">
+                {
                 (!data) ? "" : (
                     <>  <h1>{data.name}</h1>
                         <img src={data.sprites.other.dream_world.front_default} alt={data.name} />
@@ -32,7 +33,9 @@ const PokemonInfo = ({ data }) => {
                         </div>
                     </>
                 )
-            }
+                }
+            </div>
+            
         </>
   )
 }
