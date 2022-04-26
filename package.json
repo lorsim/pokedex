@@ -8,8 +8,8 @@
     "server": "nodemon backend/index.js",
     "build": "cd frontend && npm run build",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
-    "predeploy": "npm run build --prefix frontend",
-    "deploy": "gh-pages -d build --prefix frontend"
+    "predeploy": "cd frontend && npm run build",
+    "deploy": "cd frontend && gh-pages -d build"
   },
   "keywords": [],
   "author": "",
