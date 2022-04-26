@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 function Navbar({ user }) {
     
   const logout = () => {
-      window.open("http://localhost:5000/auth/logout", "_self")
+      window.open("/auth/logout", "_self")
   }
     
   return (

@@ -3,7 +3,7 @@ import Facebook from '../img/Facebook.webp';
 function Login() {
 
   const facebook =() => {
-      window.open("http://localhost:5000/auth/facebook", "_self");
+      window.open("/auth/facebook", "_self");
   }
 
   return (
