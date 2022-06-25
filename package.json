@@ -22,8 +22,5 @@
     "passport": "^0.5.2",
     "passport-facebook": "^3.0.0"
   },
-  "devDependencies": {
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3"
-  }
+  "devDependencies": {}
 }
