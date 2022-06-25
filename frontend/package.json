@@ -3,14 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.0.1",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.26.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-=======
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@testing-library/jest-dom": "^5.16.4",
@@ -20,7 +12,6 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
->>>>>>> 5dfd729b8f0cd39177510ca03655373b9d727a67
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -28,13 +19,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-<<<<<<< HEAD
-    "eject": "react-scripts eject"
-=======
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
->>>>>>> 5dfd729b8f0cd39177510ca03655373b9d727a67
+    "deploy": "gh-pages -d build",
+    "commit": "cz"
   },
   "eslintConfig": {
     "extends": [
@@ -53,10 +41,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
-  }
-=======
   },
   "proxy": "http://localhost:5000"
->>>>>>> 5dfd729b8f0cd39177510ca03655373b9d727a67
 }
